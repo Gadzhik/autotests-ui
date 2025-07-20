@@ -32,12 +32,17 @@ with sync_playwright() as playwright:
     courses_header = page.get_by_test_id('courses-list-toolbar-title-text')
     expect(courses_header).to_be_visible()
     expect(courses_header).to_have_text('Courses')
-    print(courses_header.is_visible())
+
+    icon_check = page.get_by_test_id('courses-list-empty-view-icon')
+    expect(icon_check).to_be_visible()
 
     results_text = page.get_by_test_id('courses-list-empty-view-title-text')
     expect(results_text).to_be_visible()
     expect(results_text).to_have_text('There is no results')
-    print(results_text.is_visible())
+
+    result_pipelene_text = page.get_by_test_id('courses-list-empty-view-description-text')
+    expect(result_pipelene_text).to_be_visible()
+    expect(result_pipelene_text).to_have_text('Results from the load test pipeline will be displayed here')
 
     page.wait_for_timeout(3000)
 
